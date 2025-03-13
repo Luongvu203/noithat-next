@@ -1,0 +1,86 @@
+
+main {
+  padding-top: 80px; /* Điều chỉnh theo chiều cao của header */
+}
+
+/* Định dạng chung */
+.product-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.product-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Danh sách sản phẩm */
+.product-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-item {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Ảnh sản phẩm */
+.product-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Tên sản phẩm */
+.product-item h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+/* Giá và giảm giá */
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff5733;
+}
+
+.product-discount {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+/* Đánh giá sao */
+.product-rating {
+  color: gold;
+  margin-top: 5px;
+}
+
+/* Nút xem thêm */
+.load-more {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.load-more:hover {
+  background: #0056b3;
+}
