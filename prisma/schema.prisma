@@ -21,6 +21,7 @@ model User {
   password  String
   role      String   @default("user") // Thêm trường role với giá trị mặc định là "user"
   createdAt DateTime @default(now())
+  Cart      Cart?
 }
 
 // bảng product
@@ -29,8 +30,24 @@ model Product {
   name      String
   price     String
   category  String
-  image     String?  @db.VarChar(1000)  // Increase max length to 1000
+  image     String?  @db.VarChar(1000) // Increase max length to 1000
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
+model Cart {
+  id     Int        @id @default(autoincrement())
+  user   User       @relation(fields: [userId], references: [id])
+  userId Int        @unique // Đảm bảo kiểu giống với User.id
+  items  CartItem[]
+}
+
+model CartItem {
+  id        Int    @id @default(autoincrement()) // Đổi từ String -> Int
+  cart      Cart   @relation(fields: [cartId], references: [id])
+  cartId    Int // Đổi từ String -> Int, khớp với Cart.id
+  productId String // Giữ nguyên kiểu String theo Product.id
+  name      String
+  price     String // Giữ nguyên kiểu String theo Product.price
+  quantity  Int
+}

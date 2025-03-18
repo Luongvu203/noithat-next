@@ -82,7 +82,7 @@ body {
   
   .toggle {
     position: relative;
-    background-color: #512da8;
+    background-color: #b88e63;
     color: #fff;
     height: 100%;
     width: 200%;
@@ -173,8 +173,8 @@ body {
   
   button {
     border-radius: 20px;
-    border: 1px solid #512da8;
-    background-color: #512da8;
+    border: 1px solid #b88e63;
+    background-color: #b88e63;
     color: #fff;
     font-size: 12px;
     font-weight: bold;
@@ -233,11 +233,11 @@ body {
   
   .container-back-home button {
     background-color: #fff;
-    color: #512da8;
+    color: #b88e63;
   }
   
   .container-back-home button a {
-    color: #512da8;
+    color: #b88e63;
     margin: 0;
   }
   

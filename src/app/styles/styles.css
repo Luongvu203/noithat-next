@@ -249,6 +249,7 @@
 .bestseller {
   text-align: center;
   padding: 50px 0;
+
 }
 
 .bestseller h2 {
@@ -264,6 +265,7 @@
 }
 
 .product {
+  cursor: pointer;
   width: 260px;
   text-align: center;
 }
@@ -508,7 +510,8 @@ form button {
 }
 
 form button:hover {
-  background-color: #ffff;
+  background-color: #b58e6f;
+  color: black;
 }
 /* ============================================= */
 footer {
@@ -589,4 +592,347 @@ button:hover {
 .fas,
 .fab {
   margin-right: 8px;
+}
+
+/* =reponsive==================================== */
+/* === Global Styles === */
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* === Media query for tablets (768px to 1023px) === */
+@media screen and (max-width: 1023px) {
+  /* General container adjustments */
+  .container-pow, .container-haz, .showcase-container {
+    padding: 10px;
+    width: 95%;
+  }
+
+  /* Header adjustments */
+  .header-container {
+    height: auto;
+  }
+  
+  .logo {
+    font-size: 20px;
+  }
+
+  .navbar ul li {
+    margin: 0 10px;
+  }
+
+  /* Banner content adjustments */
+  .content h1 {
+    font-size: 2rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+  }
+
+  /* Features section */
+  .features .features-class .container {
+    gap: 20px;
+  }
+
+  .feature-item {
+    width: 220px;
+  }
+
+  /* Design showcase section */
+  .showcase-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .showcase-text {
+    width: 90%;
+    text-align: center;
+  }
+
+  .showcase-text hr {
+    margin: 10px auto;
+  }
+
+  .showcase-images img {
+    width: 280px;
+    height: 280px;
+  }
+
+  /* Products section */
+  .product-container {
+    gap: 30px;
+  }
+
+  .product {
+    width: 220px;
+  }
+
+  /* Features text section */
+  .features-text {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .text-us {
+    margin-bottom: 30px;
+  }
+
+  /* Instagram gallery */
+  .gallery {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .gallery img {
+    width: 45%;
+  }
+
+  /* Footer */
+  .footer-container {
+    padding: 0 20px;
+  }
+
+  .company-info, .shopping-guide, .newsletter {
+    margin: 30px;
+  }
+}
+
+/* === Media query for mobile devices (up to 767px) === */
+@media screen and (max-width: 767px) {
+  /* Header adjustments */
+  .container-pow {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .header-container {
+    height: auto;
+    padding: 10px 0;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar ul li {
+    margin: 8px 0;
+  }
+
+  /* Banner content */
+  .content {
+    padding: 15px;
+  }
+
+  .content h1 {
+    font-size: 1.8rem;
+  }
+
+  .content p {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 10px 30px;
+    font-size: 12px;
+  }
+
+  /* Features section */
+  .features .features-class .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-item {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  /* Design showcase section */
+  .showcase-images {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .showcase-images img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  /* Products section */
+  .product {
+    width: 90%;
+    max-width: 280px;
+  }
+
+  /* Why choose us section */
+  .why-choose-us h2 {
+    font-size: 24px;
+  }
+
+  /* Instagram gallery */
+  .gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery img {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  /* Delivery form section */
+  .devery-container {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .body-container {
+    padding: 20px;
+  }
+
+  .container-form-title {
+    padding: 15px;
+  }
+
+  .container-form-title-off h2 {
+    font-size: 24px;
+  }
+
+  /* Footer */
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .company-info, .shopping-guide, .newsletter {
+    width: 90%;
+    margin: 20px 0;
+  }
+
+  /* Additional mobile adjustments */
+  .video-background {
+    height: 100vh;
+  }
+
+  .banner {
+    height: 100vh;
+  }
+}
+
+/* === Media query for extra small devices (up to 480px) === */
+@media screen and (max-width: 480px) {
+  /* Header adjustments */
+  .logo {
+    font-size: 18px;
+  }
+
+  /* Banner content */
+  .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .content p {
+    font-size: 0.8rem;
+  }
+
+  /* Button adjustments */
+  .btn, .view-more, .follow-btn, form button {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+
+  /* Adjustments for newsletter input */
+  #emai-in-fa, #in-very {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  /* Section title adjustments */
+  .bestseller h2, .instagram-gallery h2, .container-form-title-off h2 {
+    font-size: 22px;
+  }
+
+  /* Footer text size */
+  .footer-container h3 {
+    font-size: 16px;
+  }
+
+  .footer-container p {
+    font-size: 12px;
+  }
+}
+
+/* === Hamburger Menu for Mobile (up to 767px) === */
+@media screen and (max-width: 767px) {
+  .container-pow {
+    position: relative;
+  }
+
+  /* Hamburger button */
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    cursor: pointer;
+    z-index: 2000;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: #333;
+    transition: all 0.3s ease;
+  }
+
+  /* Hide navbar by default */
+  .navbar {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: rgb(234, 232, 224);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    z-index: 1500;
+  }
+
+  /* Show navbar when active */
+  .navbar.active {
+    display: block;
+  }
+
+  /* Adjust banner height on very small screens */
+  @media screen and (max-height: 500px) {
+    .banner {
+      height: 110vh;
+    }
+  }
+}
+
+/* === Sticky Header Fix for Mobile (up to 767px) === */
+@media screen and (max-width: 767px) {
+  body {
+    padding-top: 80px;
+  }
+
+  .banner {
+    margin-top: -80px;
+  }
 }

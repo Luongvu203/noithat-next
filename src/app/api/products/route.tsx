@@ -4,37 +4,39 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-// GET all products
+// Lấy tất cả các sản  phẩm 
 export async function GET() {
   try {
     const products = await prisma.product.findMany({
+      // Sắp xếp theo id giảm dần (mới nhất lên trước)
       orderBy: {
         id: 'desc',
       },
     });
     return NextResponse.json(products);
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error('Lỗi khi tìm sản phẩm:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch products' },
+      { error: 'Không thể tải sản phẩm' },
       { status: 500 }
     );
   }
 }
 
-// POST a new product
+// POST Thêm sản phẩm mới
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    // Lấy dữ liệu từ request
+    const body = await request.json(); 
     const { name, price, category, image } = body;
 
     if (!name || !price || !category) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Thiếu các trường bắt buộc' },
         { status: 400 }
       );
     }
-
+    // Thêm sản phẩm vào database
     const product = await prisma.product.create({
       data: {
         name,
@@ -43,12 +45,13 @@ export async function POST(request: Request) {
         image: image || null,
       },
     });
-
+    // Trả về sản phẩm vừa tạo
     return NextResponse.json(product);
+    // Xử lý lỗi
   } catch (error) {
-    console.error('Error creating product:', error);
+    console.error('Lỗi tạo sản phẩm:', error);
     return NextResponse.json(
-      { error: 'Failed to create product' },
+      { error: 'Không tạo được sản phẩm' },
       { status: 500 }
     );
   }

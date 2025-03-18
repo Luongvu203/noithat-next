@@ -1,29 +1,46 @@
 "use client";
 
 import Header from "./components/Header";
+import Banner from "./components/Banner";
+import Footer from "./components/Footer";
+
 import "./styles/reset.css";
 import "./styles/styles.css";
 
-import FeatureItems from "./components/FeatureItems";
-import InstagramGallery from "./components/InstagramGallery";
+import FeatureItems from "./components/js/FeatureItems";
+import InstagramGallery from "./components/js/InstagramGallery";
 
 import { useState, useEffect } from "react";
 
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image: string | null;
+}
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token"); // Kiểm tra token
+    const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
-  }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-    setIsLoggedIn(false);
-    window.location.href = "/"; // Reload về trang chủ
-  };
+    // Fetch sản phẩm từ API
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Lỗi lấy sản phẩm:", err);
+        setLoading(false);
+      });
+    }, []);
+
 
   return (
     
@@ -31,29 +48,7 @@ export default function Home() {
 
       <Header />
 
-      <section className="banner">
-        <div className="video-container">
-          <video className="video-background" autoPlay muted loop>
-            <source src="image/videonoithat.mp4" type="video/mp4" />
-            Trình duyệt của bạn không hỗ trợ video.
-          </video>
-        </div>
-        <div className="overlay">
-          <div className="content">
-            <h1>Nội thất cho thế hệ mới</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              interdum leo in enim placerat ultrices. Nullam faucibus tellus
-              dolor, ullamcorper eleifend neque sagittis ac. Sed malesuada nibh
-              nec velit venenatis, eu rhoncus metus pretium. Mauris ut tortor
-              pharetra, fringilla purus ut.
-            </p>
-            <a href="/san-pham" className="btn">
-              Xem sản phẩm
-            </a>
-          </div>
-        </div>
-      </section>
+      <Banner />
 
       <section className="features">
         <div className="container-haz">
@@ -116,44 +111,28 @@ export default function Home() {
         </div>
       </section>
 
+            {/* Sản phẩm bán chạy */}
       <section className="bestseller">
         <h2>Sản phẩm bán chạy</h2>
         <div className="product-container">
-          <div className="product">
-            <img src="image/anh7.png" alt="Sản phẩm 1" />
-            <h3>Sản phẩm 1</h3>
-            <p className="price">
-              100.000 đ <span className="discount">-30%</span>
-            </p>
-            <p className="rating">★★★★★</p>
-          </div>
-          <div className="product">
-            <img src="image/anh8.png" alt="Sản phẩm 2" />
-            <h3>Sản phẩm 2</h3>
-            <p className="price">
-              100.000 đ <span className="discount">-30%</span>
-            </p>
-            <p className="rating">★★★★★</p>
-          </div>
-          <div className="product">
-            <img src="image/anh9.png" alt="Sản phẩm 3" />
-            <h3>Sản phẩm 3</h3>
-            <p className="price">
-              100.000 đ <span className="discount">-30%</span>
-            </p>
-            <p className="rating">★★★★★</p>
-          </div>
-          <div className="product">
-            <img src="image/anh10.png" alt="Sản phẩm 4" />
-            <h3>Sản phẩm 4</h3>
-            <p className="price">
-              100.000 đ <span className="discount">-30%</span>
-            </p>
-            <p className="rating">★★★★★</p>
-          </div>
+          {loading ? (
+            <p>Đang tải sản phẩm...</p>
+          ) : (
+            products.slice(0, 4).map((product) => (
+              <div key={product.id} className="product">
+                <img src={product.image || "image/default.png"} alt={product.name} />
+                <h3>{product.name}</h3>
+                <p className="price">
+                  {product.price.toLocaleString()} đ <span className="discount">-30%</span>
+                </p>
+                <p className="rating">★★★★★</p>
+              </div>
+            ))
+          )}
         </div>
         <button className="view-more">Xem thêm</button>
       </section>
+
 
       <section className="why-choose-us">
         <h2>Tại sao nên chọn chúng tôi</h2>
@@ -232,52 +211,7 @@ export default function Home() {
         </div>
       </div>
 
-      <footer>
-        <div className="footer-container">
-          <div className="company-info">
-            <h3>CÔNG TY CỔ PHẦN ABC</h3>
-            <p>
-              <i className="fas fa-home"></i> Đường ... Phường ... Quận ...
-              Thành phố ...
-            </p>
-            <p>
-              <i className="fas fa-envelope"></i> abc@example.com
-            </p>
-            <p>
-              <i className="fas fa-phone"></i> 0987654321
-            </p>
-            <p>
-              <i className="fas fa-fax"></i> +84 24 9999 9999
-            </p>
-          </div>
-          <div className="shopping-guide">
-            <h3>HƯỚNG DẪN MUA HÀNG</h3>
-            <p>Hướng dẫn mua hàng</p>
-            <p>Khu vực giao hàng</p>
-            <p>Phương thức thanh toán</p>
-            <p>Chính sách trả hàng và hoàn tiền</p>
-            <p>Chính sách bảo mật thông tin</p>
-          </div>
-          <div className="newsletter">
-            <h3>ĐĂNG KÝ NHẬN TIN</h3>
-            <label htmlFor="email">* Email của bạn</label>
-            <input
-              id="emai-in-fa"
-              type="email"
-              placeholder="Nhập email của bạn"
-            />
-            <button type="submit">Gửi</button>
-            <div className="social-icons">
-              <i className="fab fa-facebook"></i>
-              <i className="fab fa-youtube"></i>
-              <i className="fab fa-tiktok"></i>
-              <i className="fab fa-instagram"></i>
-              <i className="fab fa-facebook-messenger"></i>
-              <i className="fab fa-twitter"></i>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 }
