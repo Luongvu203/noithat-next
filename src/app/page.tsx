@@ -9,41 +9,12 @@ import "./styles/styles.css";
 
 import FeatureItems from "./components/js/FeatureItems";
 import InstagramGallery from "./components/js/InstagramGallery";
-
-import { useState, useEffect } from "react";
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string | null;
-}
+import Bestseller from "./components/Bestseller";
 
 export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
-
-    // Fetch sản phẩm từ API
-    fetch("/api/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Lỗi lấy sản phẩm:", err);
-        setLoading(false);
-      });
-    }, []);
-
 
   return (
-    
+
     <div className="body-contai-full">
 
       <Header />
@@ -111,27 +82,7 @@ export default function Home() {
         </div>
       </section>
 
-            {/* Sản phẩm bán chạy */}
-      <section className="bestseller">
-        <h2>Sản phẩm bán chạy</h2>
-        <div className="product-container">
-          {loading ? (
-            <p>Đang tải sản phẩm...</p>
-          ) : (
-            products.slice(0, 4).map((product) => (
-              <div key={product.id} className="product">
-                <img src={product.image || "image/default.png"} alt={product.name} />
-                <h3>{product.name}</h3>
-                <p className="price">
-                  {product.price.toLocaleString()} đ <span className="discount">-30%</span>
-                </p>
-                <p className="rating">★★★★★</p>
-              </div>
-            ))
-          )}
-        </div>
-        <button className="view-more">Xem thêm</button>
-      </section>
+      <Bestseller />
 
 
       <section className="why-choose-us">
@@ -162,7 +113,7 @@ export default function Home() {
       </section>
 
       <section className="instagram-gallery">
-      <InstagramGallery/>
+        <InstagramGallery />
         <h2>#ChiaSẻKhôngGianSống</h2>
         <p>
           Chia sẻ trải nghiệm của bạn với sản phẩm của chúng tôi thông qua
@@ -178,7 +129,7 @@ export default function Home() {
       </section>
 
       <div className="devery-container">
-      
+
         <div className="body-container">
           <div className="container-form-title">
             <div className="container-form-title-off">
@@ -211,7 +162,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

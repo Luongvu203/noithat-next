@@ -30,7 +30,8 @@ model Product {
   name      String
   price     String
   category  String
-  image     String?  @db.VarChar(1000) // Increase max length to 1000
+  image     String?  @db.VarChar(1000) 
+  description String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -38,16 +39,16 @@ model Product {
 model Cart {
   id     Int        @id @default(autoincrement())
   user   User       @relation(fields: [userId], references: [id])
-  userId Int        @unique // Đảm bảo kiểu giống với User.id
+  userId Int        @unique 
   items  CartItem[]
 }
 
 model CartItem {
-  id        Int    @id @default(autoincrement()) // Đổi từ String -> Int
+  id        Int    @id @default(autoincrement())
   cart      Cart   @relation(fields: [cartId], references: [id])
-  cartId    Int // Đổi từ String -> Int, khớp với Cart.id
-  productId String // Giữ nguyên kiểu String theo Product.id
+  cartId    Int 
+  productId String 
   name      String
-  price     String // Giữ nguyên kiểu String theo Product.price
+  price     String 
   quantity  Int
 }

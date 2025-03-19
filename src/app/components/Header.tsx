@@ -41,6 +41,7 @@ export default function Header() {
             <li><a href="#">Về chúng tôi</a></li>
             <li><a href="#">Liên hệ</a></li>
             <li><a href="#">Danh sách showroom</a></li>
+
             <li>
               {isLoggedIn ? (
                 <a onClick={handleLogout} className="logout-btn">Đăng Xuất</a>

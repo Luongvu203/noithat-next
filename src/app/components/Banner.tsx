@@ -5,7 +5,7 @@ import "../styles/reset.css";
 import "../styles/styles.css";
 
 
-// Banner.tsx
+// Banner
 export default function Banner() {
     return (
       <section className="banner">
