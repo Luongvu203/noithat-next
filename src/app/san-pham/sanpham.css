@@ -26,6 +26,9 @@ main {
 
 /* Responsive */
 @media (max-width: 768px) {
+  main {
+    padding-top: 0;
+  }
   .product-layout {
     grid-template-columns: 1fr;
   }
