@@ -265,6 +265,10 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  
+.product-detail-container {
+  padding-top: 0px !important;
+}
   .product-detail-main {
     flex-direction: column;
   }
