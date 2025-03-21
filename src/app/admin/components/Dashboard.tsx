@@ -1,6 +1,6 @@
 // src/app/admin/components/Dashboard.tsx
 import React, { useState, useEffect } from 'react';
-import { Product } from '../types';
+import { Product } from '../../types';
 
 const Dashboard: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
