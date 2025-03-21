@@ -6,12 +6,14 @@ import path from "path";
 
 const prisma = new PrismaClient();
 
+// Hàm lấy ID từ URL
 async function getProductId(req: Request) {
   const { pathname } = new URL(req.url);
   const id = pathname.split("/").pop();
   return id && !isNaN(parseInt(id)) ? parseInt(id) : null;
 }
 
+// GET - Lấy sản phẩm theo ID
 export async function GET(req: Request) {
   const productId = await getProductId(req);
   if (!productId) {
@@ -28,6 +30,7 @@ export async function GET(req: Request) {
     : NextResponse.json({ error: "Không có sản phẩm" }, { status: 404 });
 }
 
+// PUT - Cập nhật sản phẩm
 export async function PUT(req: Request) {
   const productId = await getProductId(req);
   if (!productId) {
@@ -59,6 +62,7 @@ export async function PUT(req: Request) {
   return NextResponse.json(updatedProduct);
 }
 
+// DELETE - Xóa sản phẩm theo ID
 export async function DELETE(req: Request) {
   const productId = await getProductId(req);
   if (!productId) {
