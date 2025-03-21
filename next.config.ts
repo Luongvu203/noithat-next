@@ -1,19 +1,7 @@
-// next.config.js
-module.exports = {
-  experimental: {
-    serverComponentsExternalPackages: ['sharp'],
-  },
-  async headers() {
-    return [
-      {
-        source: '/api/upload',
-        headers: [
-          {
-            key: 'Connection',
-            value: 'keep-alive',
-          },
-        ],
-      },
-    ];
-  },
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
 };
+
+export default nextConfig;
