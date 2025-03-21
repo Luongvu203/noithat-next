@@ -1,4 +1,3 @@
-// File: /app/api/upload/route.ts
 export const runtime = 'nodejs';
 import { NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
@@ -17,7 +16,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // Check if file is an image
     if (!file.type.startsWith('image/')) {
       return NextResponse.json(
         { error: 'File must be an image' },
@@ -25,24 +23,24 @@ export async function POST(request: Request) {
       );
     }
 
-    // Create unique filename
+    // Tạo tên file duy nhất
     const timestamp = Date.now();
     const originalName = file.name.replace(/\s+/g, '_').toLowerCase();
     const fileName = `${timestamp}-${originalName}`;
 
-    // Create uploads directory if it doesn't exist
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    // Thư mục lưu trữ ảnh (nằm ngoài public/)
+    const uploadDir = path.join(process.cwd(), 'uploads');
     if (!existsSync(uploadDir)) {
       await mkdir(uploadDir, { recursive: true });
     }
 
-    // Save file to uploads directory
+    // Lưu file vào thư mục
     const filePath = path.join(uploadDir, fileName);
     const buffer = Buffer.from(await file.arrayBuffer());
     await writeFile(filePath, buffer);
 
-    // Return the relative path for storing in the database
-    const relativePath = `/uploads/${fileName}`;
+    // Trả về đường dẫn ảnh động thay vì static để tránh cache
+    const relativePath = `/api/uploads/${fileName}`;
 
     return NextResponse.json({ filePath: relativePath });
   } catch (error) {
@@ -53,12 +51,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
-// To handle larger file uploads, add this to your next.config.js:
-// module.exports = {
-//   api: {
-//     bodyParser: {
-//       sizeLimit: '10mb',
-//     },
-//   },
-// };
