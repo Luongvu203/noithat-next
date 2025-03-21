@@ -1,14 +1,18 @@
+export const runtime = 'nodejs';
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import fs from "fs/promises"; // Dùng fs.promises để xóa ảnh an toàn
+import fs from "fs/promises";
 import path from "path";
 
 const prisma = new PrismaClient();
 
 // GET lấy sản phẩm theo ID
-export async function GET(request: Request, context: { params: { id: string } }) {
+export async function GET(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
   try {
-    const { id } = await context.params;
+    const { id } = params;
     if (!id || isNaN(parseInt(id))) {
       return NextResponse.json({ error: "ID không hợp lệ" }, { status: 400 });
     }
@@ -19,7 +23,6 @@ export async function GET(request: Request, context: { params: { id: string } })
       select: { id: true, name: true, price: true, category: true, image: true, description: true }, 
     });
     
-
     if (!product) {
       return NextResponse.json({ error: "Không có sản phẩm" }, { status: 404 });
     }
@@ -32,18 +35,21 @@ export async function GET(request: Request, context: { params: { id: string } })
 }
 
 // PUT cập nhật sản phẩm theo ID
-export async function PUT(request: Request, context: { params: { id: string } }) {
+export async function PUT(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
   try {
-    const { id } = await context.params;
+    const { id } = params;
     if (!id || isNaN(parseInt(id))) {
       return NextResponse.json({ error: "ID không hợp lệ" }, { status: 400 });
     }
     const productId = parseInt(id);
 
     const body = await request.json();
-    const { name, price, category, image } = body;
+    const { name, price, category, image, description } = body;
 
-    if (!name && !price && !category && !image) {
+    if (!name && !price && !category && !image && !description) {
       return NextResponse.json({ error: "Không có dữ liệu cập nhật" }, { status: 400 });
     }
 
@@ -66,7 +72,13 @@ export async function PUT(request: Request, context: { params: { id: string } })
 
     const updatedProduct = await prisma.product.update({
       where: { id: productId },
-      data: { name, price, category, image: image || null },
+      data: { 
+        name: name !== undefined ? name : undefined,
+        price: price !== undefined ? price : undefined,
+        category: category !== undefined ? category : undefined,
+        image: image !== undefined ? image : undefined,
+        description: description !== undefined ? description : undefined
+      },
     });
 
     return NextResponse.json(updatedProduct);
@@ -77,9 +89,12 @@ export async function PUT(request: Request, context: { params: { id: string } })
 }
 
 // DELETE xóa sản phẩm theo ID
-export async function DELETE(request: Request, context: { params: { id: string } }) {
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
   try {
-    const { id } = await context.params;
+    const { id } = params;
     if (!id || isNaN(parseInt(id))) {
       return NextResponse.json({ error: "ID không hợp lệ" }, { status: 400 });
     }
