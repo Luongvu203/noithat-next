@@ -40,7 +40,7 @@ export async function POST(request: Request) {
     await writeFile(filePath, buffer);
 
     // Trả về đường dẫn ảnh động thay vì static để tránh cache
-    const relativePath = `/api/uploads/${fileName}`;
+    const relativePath = `/uploads/${fileName}`;
 
     return NextResponse.json({ filePath: relativePath });
   } catch (error) {
