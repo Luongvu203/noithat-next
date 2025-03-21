@@ -270,6 +270,13 @@
   text-align: center;
   box-shadow: 0 4px 12px #0000001a;
   border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .product img {
