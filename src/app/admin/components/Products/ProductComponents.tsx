@@ -1,6 +1,6 @@
 // ProductComponents.tsx
 import React from 'react';
-import { Product, NewProduct, EditingProduct } from '../../types';
+import { Product, NewProduct, EditingProduct } from '../../../types';
 
 interface ProductListProps {
     products: Product[];

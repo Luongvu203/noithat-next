@@ -1,6 +1,6 @@
 // useProducts.ts
 import { useState, useEffect } from 'react';
-import { Product, NewProduct, EditingProduct } from '../../types';
+import { Product, NewProduct, EditingProduct } from '../../../types';
 
 export function useProducts() {
     const [products, setProducts] = useState<Product[]>([]);

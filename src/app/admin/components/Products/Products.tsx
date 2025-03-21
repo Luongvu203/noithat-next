@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from 'react';
-import { Product, NewProduct, EditingProduct } from '../../types';
+import { Product, NewProduct, EditingProduct } from '../../../types';
 import { useProducts } from './useProducts';
 import { ProductList, AddProductForm, EditProductForm } from './ProductComponents';
 
