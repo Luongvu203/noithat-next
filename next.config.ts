@@ -1,22 +1,19 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
-  
-  // Thêm cấu hình này để phục vụ các file tĩnh từ thư mục uploads
-  async rewrites() {
+// next.config.js
+module.exports = {
+  experimental: {
+    serverComponentsExternalPackages: ['sharp'],
+  },
+  async headers() {
     return [
       {
-        source: '/uploads/:path*',
-        destination: '/public/uploads/:path*',
+        source: '/api/upload',
+        headers: [
+          {
+            key: 'Connection',
+            value: 'keep-alive',
+          },
+        ],
       },
     ];
   },
-  
-  // Hoặc bạn có thể sử dụng publicRuntimeConfig
-  publicRuntimeConfig: {
-    staticFolder: '/public',
-  },
 };
-
-export default nextConfig;
