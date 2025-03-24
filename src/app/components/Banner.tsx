@@ -11,7 +11,7 @@ export default function Banner() {
       <section className="banner">
         <div className="video-container">
           <video className="video-background" autoPlay muted loop>
-            <source src="image/videonoithat.mp4" type="video/mp4" />
+          <source src="http://64.176.83.157:3000/image/videonoithat.mp4" type="video/mp4" />
             Trình duyệt của bạn không hỗ trợ video.
           </video>
         </div>
