@@ -1,5 +1,6 @@
 /* Định dạng chung */
 .body-contai-full {
+  background-color: #fff;
   margin: 0;
   font-family: "Raleway", sans-serif;
 
@@ -218,6 +219,7 @@
 }
 
 .showcase-text h2 {
+  color: #222;
   font-size: 28px;
   font-weight: bold;
 }
@@ -253,6 +255,7 @@
 }
 
 .bestseller h2 {
+  color: #222;
   font-size: 28px;
   margin-bottom: 20px;
 }
@@ -288,6 +291,7 @@
 }
 
 .product h3 {
+  color: #222;
   font-size: 18px;
   margin: 10px 0;
   font-weight: bold;
@@ -391,6 +395,7 @@ color: #222;
   margin: auto;
 }
 .instagram-gallery h2 {
+  color: #222;
   font-size: 36px;
   font-weight: bold;
   padding-top: 50px;
@@ -557,6 +562,7 @@ footer {
 }
 
 h3 {
+  color: #222;
   font-size: 18px;
   margin-bottom: 15px;
   font-weight: bold;
@@ -569,11 +575,13 @@ p {
 }
 
 label {
+  color: #222;
   font-size: 14px;
   font-weight: bold;
 }
 
 #emai-in-fa {
+  color: #222;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
