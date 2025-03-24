@@ -516,6 +516,7 @@ form label {
 }
 
 #in-very {
+  color: #333;
   background-color: white;
   width: 100%;
   padding: 10px;
@@ -529,7 +530,7 @@ form button {
   width: 200px;
   padding: 12px;
   border: none;
-  background-color: #b9826a;
+  background-color: #b58e6f;
   color: white;
   font-size: 16px;
   cursor: pointer;
