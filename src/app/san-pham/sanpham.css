@@ -2,6 +2,7 @@
 /* Cấu trúc layout mới với filter bên trái */
 main {
   padding-top: 100px;
+background-color: #fff;
 }
 
 .product-section {

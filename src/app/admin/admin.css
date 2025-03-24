@@ -95,6 +95,7 @@ body {
 
 /* Header */
 .header {
+  color: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -217,6 +218,7 @@ body {
 }
 
 .form-group-image span {
+  color: #333;
   display: block;
   cursor: pointer;
   background-color: #f8f9fa;
@@ -324,6 +326,7 @@ body {
 }
 
 .products-table {
+  color: #333;
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;

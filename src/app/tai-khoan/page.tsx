@@ -89,7 +89,7 @@ export default function LoginSignup() {
         {/* Form đăng ký */}
         <div className="form-container sign-up">
           <form onSubmit={handleSignup}>
-            <h1>Tạo Tài Khoản</h1>
+            <h1 className="h1-hello">Tạo Tài Khoản</h1>
             <div className="social-icons">
               <a href="#" className="icon">
                 <FontAwesomeIcon icon={faGooglePlusG} />
@@ -98,7 +98,7 @@ export default function LoginSignup() {
                 <FontAwesomeIcon icon={faFacebookF} />
               </a>
             </div>
-            <span>Hoặc sử dụng email và mật khẩu của bạn</span>
+            <span className="wow">Hoặc sử dụng email và mật khẩu của bạn</span>
             <input name="name" type="text" placeholder="Name" required onChange={handleChange} />
             <input name="email" type="email" placeholder="Email" required onChange={handleChange} />
             <input name="password" type="password" placeholder="Password" required onChange={handleChange} />
@@ -110,7 +110,7 @@ export default function LoginSignup() {
         {/* Form đăng nhập */}
         <div className="form-container sign-in">
           <form onSubmit={handleLogin}>
-            <h1>Đăng Nhập</h1>
+            <h1 className="h1-hello">Đăng Nhập</h1>
             <div className="social-icons">
               <a href="#" className="icon">
                 <FontAwesomeIcon icon={faGooglePlusG} />
@@ -119,7 +119,7 @@ export default function LoginSignup() {
                 <FontAwesomeIcon icon={faFacebookF} />
               </a>
             </div>
-            <span>Hoặc sử dụng email và mật khẩu của bạn</span>
+            <span className="wow">Hoặc sử dụng email và mật khẩu của bạn</span>
             <input name="email" type="email" placeholder="Email" required onChange={handleChange} />
             <input name="password" type="password" placeholder="Password" required onChange={handleChange} />
             <a href="#">Bạn quên mật khẩu?</a>
