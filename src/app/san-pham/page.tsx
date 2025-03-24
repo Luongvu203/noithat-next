@@ -84,8 +84,14 @@ export default function ProductPage() {
             return price > 1000000 && price <= 5000000;
           });
           break;
-        case "over5000":
-          result = result.filter(product => parseFloat(product.price.replace(/[^\d.]/g, '')) > 5000000);
+          case "5000to10000":
+            result = result.filter(product => {
+              const price = parseFloat(product.price.replace(/[^\d.]/g, ''));
+              return price > 5000000 && price <= 10000000;
+            });
+            break;
+        case "over10000":
+          result = result.filter(product => parseFloat(product.price.replace(/[^\d.]/g, '')) > 10000000);
           break;
       }
     }
@@ -183,7 +189,8 @@ export default function ProductPage() {
                   <option value="100to500">100.000đ - 500.000đ</option>
                   <option value="500to1000">500.000đ - 1.000.000đ</option>
                   <option value="1000to5000">1.000.000đ - 5.000.000đ</option>
-                  <option value="over5000">Trên 5.000.000đ</option>
+                  <option value="5000to10000">5.000.000đ - 10.000.000đ</option>
+                  <option value="over10000">Trên 10.000.000đ</option>
                 </select>
               </div>
 
