@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import Footer from "./components/Footer";
@@ -24,19 +25,19 @@ export default function Home() {
       <section className="features">
         <div className="container-haz">
           <div className="feature-item">
-            <img src="image/anh1.png" alt="Tinh tế" />
+          <Image src="/image/anh1.png" alt="Tinh tế" width={300} height={300} />
             <p className="feature-title dely">Tinh tế</p>
           </div>
           <div className="feature-item center">
-            <img src="image/anh2.png" alt="Trẻ trung" />
+          <Image src="/image/anh2.png" alt="Trẻ trung" width={300} height={300} />
             <p className="feature-title">Trẻ trung</p>
           </div>
           <div className="feature-item">
-            <img src="image/anh3.png" alt="Thanh thoát" />
+            <Image src="/image/anh3.png" alt="Thanh thoát" width={300} height={300}  />
             <p className="feature-title dely">Thanh thoát</p>
           </div>
           <div className="feature-item center">
-            <img src="image/anh4.png" alt="Ấm cúng" />
+            <Image src="/image/anh4.png" alt="Ấm cúng" width={300} height={300}  />
             <p className="feature-title">Ấm cúng</p>
           </div>
         </div>
@@ -44,19 +45,19 @@ export default function Home() {
       <section className="features-class">
         <div className="container-haz">
           <div className="feature-item">
-            <img src="image/anh1.png" alt="Tinh tế" />
+            <Image src="/image/anh1.png" alt="Tinh tế" width={300} height={300} />
             <p className="feature-title fame-of">Tinh tế</p>
           </div>
           <div className="feature-item">
-            <img src="image/anh2.png" alt="Trẻ trung" />
+            <Image src="/image/anh2.png" alt="Trẻ trung" width={300} height={300} />
             <p className="feature-title fame-of">Trẻ trung</p>
           </div>
           <div className="feature-item">
-            <img src="image/anh3.png" alt="Thanh thoát" />
+            <Image src="/image/anh3.png" alt="Thanh thoát" width={300} height={300} />
             <p className="feature-title fame-of">Thanh thoát</p>
           </div>
           <div className="feature-item">
-            <img src="image/anh4.png" alt="Ấm cúng" />
+            <Image src="/image/anh4.png" alt="Ấm cúng" width={300} height={300} />
             <p className="feature-title fame-of">Ấm cúng</p>
           </div>
         </div>
@@ -76,8 +77,8 @@ export default function Home() {
             </p>
           </div>
           <div className="showcase-images">
-            <img src="image/anh5.png" alt="Kitchen" />
-            <img src="image/anh6.png" alt="Decor" />
+            <Image src="/image/anh5.png" alt="Kitchen" width={500} height={500} />
+            <Image src="/image/anh6.png" alt="Decor" width={500} height={500} />
           </div>
         </div>
       </section>
@@ -120,10 +121,10 @@ export default function Home() {
           Instagram cùng hashtag trên nhé!
         </p>
         <div className="gallery">
-          <img src="image/anh11.png" alt="Hình 1" />
-          <img src="image/anh12.png" alt="Hình 2" />
-          <img src="image/anh13.png" alt="Hình 3" />
-          <img src="image/anh14.png" alt="Hình 4" />
+          <Image src="/image/anh11.png" alt="Hình 1" width={300} height={300} />
+          <Image src="/image/anh12.png" alt="Hình 2" width={300} height={300} />
+          <Image src="/image/anh13.png" alt="Hình 3" width={300} height={300} />
+          <Image src="/image/anh14.png" alt="Hình 4" width={300} height={300} />
         </div>
         <button className="follow-btn">Theo dõi chúng tôi</button>
       </section>

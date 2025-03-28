@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Header from "../components/Header";
@@ -84,12 +86,12 @@ export default function ProductPage() {
             return price > 1000000 && price <= 5000000;
           });
           break;
-          case "5000to10000":
-            result = result.filter(product => {
-              const price = parseFloat(product.price.replace(/[^\d.]/g, ''));
-              return price > 5000000 && price <= 10000000;
-            });
-            break;
+        case "5000to10000":
+          result = result.filter(product => {
+            const price = parseFloat(product.price.replace(/[^\d.]/g, ''));
+            return price > 5000000 && price <= 10000000;
+          });
+          break;
         case "over10000":
           result = result.filter(product => parseFloat(product.price.replace(/[^\d.]/g, '')) > 10000000);
           break;
@@ -144,7 +146,7 @@ export default function ProductPage() {
       <main>
         <section className="product-section">
           <h2>Danh sách sản phẩm</h2>
-          
+
           <div className="product-layout">
             {/* Sidebar bộ lọc bên trái */}
             <div className="filter-sidebar">
@@ -216,7 +218,12 @@ export default function ProductPage() {
                       <div key={product.id} className="product-item">
                         <a href={`/chitiet-sanpham/${product.id}`} className="product-link">
                           {product.image ? (
-                            <img src={product.image} alt={product.name} />
+                            <Image
+                              src={product.image || "/default.png"}
+                              alt={product.name}
+                              width={500}
+                              height={500}
+                            />
                           ) : (
                             <div className="no-image">No image</div>
                           )}
